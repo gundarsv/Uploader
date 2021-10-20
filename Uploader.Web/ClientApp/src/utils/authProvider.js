@@ -1,14 +1,14 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
 import { removeUser, storeUser } from '../slices/authSlice';
 import { setAuthHeader } from './axiosHeaders';
 
 export default function AuthProvider({ userManager: manager, store, children }) {
-    let userManager = useRef();
+    let userManager = React.useRef();
 
     const dispatch = useDispatch();
 
-    useEffect(() => {
+    React.useEffect(() => {
         userManager.current = manager;
 
         const onUserLoaded = (user) => {

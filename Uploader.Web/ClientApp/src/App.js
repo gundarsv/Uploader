@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Forbidden from './pages/forbidden';
@@ -17,9 +17,9 @@ import Upload from './pages/upload';
 import CreateSettings from './pages/createSettings';
 
 function App() {
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = React.useState(true);
 
-    useEffect(() => {
+    React.useEffect(() => {
         (async () => {
             await loadUserFromStorage(store);
             setTimeout(function () {

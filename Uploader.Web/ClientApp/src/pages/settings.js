@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+﻿import React from 'react';
 import Loader from 'react-loader-spinner';
 import { Link } from 'react-router-dom';
 import Navigation from '../components/navigation';
@@ -11,10 +11,10 @@ import Modal from 'react-modal';
 Modal.setAppElement('#root');
 
 function Settings() {
-    const [settingsData, setSettingsData] = useState([]);
-    const [fileExtensionsData, setFileExtensionsData] = useState([]);
-    const [selectedFileExtension, setSelectedFileExtension] = useState(undefined);
-    const [isLoading, setIsLoading] = useState(true);
+    const [settingsData, setSettingsData] = React.useState([]);
+    const [fileExtensionsData, setFileExtensionsData] = React.useState([]);
+    const [selectedFileExtension, setSelectedFileExtension] = React.useState(undefined);
+    const [isLoading, setIsLoading] = React.useState(true);
     const [modalIsOpen, setIsOpen] = React.useState(false);
     const [settingsForModal, setSettingsForModal] = React.useState(0);
     const [result, setResult] = React.useState('');

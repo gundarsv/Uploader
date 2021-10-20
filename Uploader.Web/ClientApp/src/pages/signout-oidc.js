@@ -1,15 +1,24 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { signoutRedirectCallback } from '../services/userService';
 
 function SignoutOidc() {
     const history = useHistory();
-    useEffect(() => {
+    React.useEffect(() => {
         async function signoutAsync() {
-            await signoutRedirectCallback();
-            history.push('/');
+            await signoutRedirectCallback().then(
+                () => {
+                    history.push('/');
+                },
+                (reason) => {
+                    console.log('Rejected', reason);
+                },
+            );
         }
-        signoutAsync();
+
+        (async () => {
+            await signoutAsync();
+        })();
     }, [history]);
 
     return <div>Redirecting...</div>;

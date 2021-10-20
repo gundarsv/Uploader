@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Navigation from '../components/navigation';
 import * as apiService from '../services/apiService';
 import InfiniteScroll from 'react-infinite-scroll-component';
@@ -8,9 +8,9 @@ import { Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 function Home() {
-    const [hasMore, setHasMore] = useState(true);
-    const [page, setPage] = useState(0);
-    const [fileData, setFileData] = useState([]);
+    const [hasMore, setHasMore] = React.useState(true);
+    const [page, setPage] = React.useState(0);
+    const [fileData, setFileData] = React.useState([]);
     const [result, setResult] = React.useState('');
 
     React.useEffect(() => {

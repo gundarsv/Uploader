@@ -35,15 +35,15 @@ function Navigation() {
                     ) : null}
                     {user ? (
                         <li className="navigation-item">
-                            <a href="/#" className="navigation-link" onClick={() => signOut()}>
+                            <button className="navigation-link button-clear" onClick={() => signOut()}>
                                 Sign out
-                            </a>
+                            </button>
                         </li>
                     ) : (
                         <li className="navigation-item">
-                            <a href="/#" className="navigation-link" onClick={() => signIn()}>
+                            <button className="navigation-link button-clear" onClick={() => signIn()}>
                                 Sign in
-                            </a>
+                            </button>
                         </li>
                     )}
                 </ul>

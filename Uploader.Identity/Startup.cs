@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using IdentityServer4.Services;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Uploader.Identity.IdenityConfiguration;
 
 namespace Uploader.Identity
@@ -10,6 +12,15 @@ namespace Uploader.Identity
     {
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton<ICorsPolicyService>((container) =>
+            {
+                var logger = container.GetRequiredService<ILogger<DefaultCorsPolicyService>>();
+                return new DefaultCorsPolicyService(logger)
+                {
+                    AllowAll = true,
+                };
+            });
+
             services.AddControllersWithViews();
 
             var builder = services.AddIdentityServer()
